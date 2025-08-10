@@ -279,7 +279,7 @@ class BirzaAPI(ABC):
         try:
             # Note: fetch_data would need an async version for full async support
             # For now, we'll use the synchronous version in an executor
-            loop = asyncio.get_event_loop()
+            loop = asyncio.get_running_loop()
             df = await loop.run_in_executor(
                 None, 
                 lambda: fetch_data(exchange=exchange_name, symbol=symbol, start_date=start_date, timeframe=timeframe)
