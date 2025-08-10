@@ -1,4 +1,4 @@
-# strategy/analbot.py
+# BOTS/analbot.py - Analytic bot module for evaluating trading strategies
 import os
 import sys
 import inspect
