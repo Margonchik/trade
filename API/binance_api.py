@@ -155,5 +155,5 @@ class BinanceAPI(BirzaAPI):
 
 if __name__ == "__main__":
     bot = BinanceAPI(api_key=None, api_secret=None)
-    bot.download_candels_to_csv("BTC/USDT", start_date="2023-05-05T00:00:00Z", timeframe="1h")
+    bot.download_candles_to_csv("BTC/USDT", start_date="2023-05-05T00:00:00Z", timeframe="1h")
     df = bot.get_ohlcv("BTC/USDT")
