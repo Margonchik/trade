@@ -268,13 +268,14 @@ class DataPipeline:
             # If there's only one step, process it directly
             return self._apply_step(df, steps[step_indices[0]], step_indices[0])
 
-        # Use ThreadPoolExecutor for I/O-bound operations and ProcessPoolExecutor for CPU-bound
-        # For most data processing tasks, ProcessPoolExecutor is more appropriate
+        # ProcessPoolExecutor would require pickling ``self`` (which holds a logger),
+        # causing failures on some platforms.  ThreadPoolExecutor avoids this and is
+        # sufficient here because most pandas operations release the GIL.
         max_workers = min(len(step_indices), cpu_count())
 
         # Create a copy of the DataFrame for each parallel step
         # This is necessary because each step might modify the DataFrame differently
-        with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             # Submit all tasks
             futures = {
                 executor.submit(
