@@ -129,9 +129,9 @@ class BybitAPI(BirzaAPI):
         except Exception as e:
             return self._handle_error(f"checking status of order {order_id}", e, {})
 
-    def download_candels_to_csv(self, symbol: str, start_date: str = "2023-01-01T00:00:00Z",
-                               timeframe: str = "1h", save_folder: str = "DATA") -> pd.DataFrame:
-        return super().download_candels_to_csv(symbol, start_date, timeframe, save_folder)
+    def download_candles_to_csv(self, symbol: str, start_date: str = "2023-01-01T00:00:00Z",
+                                timeframe: str = "1h", save_folder: str = "DATA") -> pd.DataFrame:
+        return super().download_candles_to_csv(symbol, start_date, timeframe, save_folder)
 
     # -------- async --------
 
@@ -207,9 +207,9 @@ class BybitAPI(BirzaAPI):
         except Exception as e:
             return await self._handle_error_async(f"checking status of order {order_id}", e, {})
 
-    async def download_candels_to_csv_async(self, symbol: str, start_date: str = "2023-01-01T00:00:00Z",
-                               timeframe: str = "1h", save_folder: str = "DATA") -> pd.DataFrame:
-        return await super().download_candels_to_csv_async(symbol, start_date, timeframe, save_folder)
+    async def download_candles_to_csv_async(self, symbol: str, start_date: str = "2023-01-01T00:00:00Z",
+                                            timeframe: str = "1h", save_folder: str = "DATA") -> pd.DataFrame:
+        return await super().download_candles_to_csv_async(symbol, start_date, timeframe, save_folder)
 
     async def close_async(self):
         if self.async_exchange:
@@ -218,5 +218,5 @@ class BybitAPI(BirzaAPI):
 
 if __name__ == "__main__":
     bot = BybitAPI()
-    bot.download_candels_to_csv("BTC/USDT", start_date="2025-05-05T00:00:00Z", timeframe="1h")
+    bot.download_candles_to_csv("BTC/USDT", start_date="2025-05-05T00:00:00Z", timeframe="1h")
     # df = bot.get_ohlcv("BTC/USDT")

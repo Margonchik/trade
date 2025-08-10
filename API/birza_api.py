@@ -137,8 +137,8 @@ class BirzaAPI(ABC):
         """
         pass
 
-    def download_candels_to_csv(self, symbol: str, start_date: str = "2023-01-01T00:00:00Z", 
-                               timeframe: str = "1h", save_folder: str = "DATA") -> pd.DataFrame:
+    def download_candles_to_csv(self, symbol: str, start_date: str = "2023-01-01T00:00:00Z",
+                                timeframe: str = "1h", save_folder: str = "DATA") -> pd.DataFrame:
         """
         Download historical candle data and save to CSV.
 
@@ -259,8 +259,8 @@ class BirzaAPI(ABC):
         """
         pass
 
-    async def download_candels_to_csv_async(self, symbol: str, start_date: str = "2023-01-01T00:00:00Z", 
-                               timeframe: str = "1h", save_folder: str = "DATA") -> pd.DataFrame:
+    async def download_candles_to_csv_async(self, symbol: str, start_date: str = "2023-01-01T00:00:00Z",
+                                            timeframe: str = "1h", save_folder: str = "DATA") -> pd.DataFrame:
         """
         Asynchronously download historical candle data and save to CSV.
 
